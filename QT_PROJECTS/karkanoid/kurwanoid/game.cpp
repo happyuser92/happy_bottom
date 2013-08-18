@@ -33,9 +33,10 @@ void Game::paintGL()
 
     m_Box->Draw();
     m_Panel->Draw();
+//    m_Brick->Draw();
 
 //	m_Ball->Draw();
-//	m_Wall->Draw();
+  m_Wall->Draw();
 }
 
 void Game::resizeGL( int width, int height )
@@ -58,13 +59,16 @@ void Game::Start()
     m_Box = new Box( ( BORDERS.right + BORDERS.left ) / 2,	// coord of the center of the box.
                      ( BORDERS.top + BORDERS.bottom ) / 2,	// the same
                                              BORDERS.size,  // size of the box
-                                                 *m_World );// reference to the current physical world. It's used for creation of the physical body.
+                                                 m_World );// reference to the current physical world. It's used for creation of the physical body.
 
-    m_Panel = new Panel( BORDERS.size / 5,    // panel's width
-                         BORDERS.size / 50,   // panel's height
+    m_Panel = new Panel( BORDERS.size / 5,      // panel's width
+                         BORDERS.size / 50,     // panel's height
                          m_Box->GetBody(),
-                         *m_World );          // reference to the current physical world*/
+                         m_World );            // reference to the current physical world*/
 
+//   m_Brick = new Brick(2, 4, BORDERS.size/40, *m_World);
+
+      m_Wall = new Wall(BORDERS.size, m_World);
 
 ///TODO Add initialization of the other graphical objects.
 	this->show();
@@ -77,7 +81,7 @@ void Game::Loop()
 	int velocityIterations = 8;
 	int positionIterations = 3;
 
-    while(ContinueStepping==true)
+/*    while(ContinueStepping==true)
     {   static int count = 0;
         for(b2Body* bodyList = m_World->GetBodyList(); bodyList; bodyList = bodyList->GetNext())
             if( bodyList->IsAwake() == false  &&  bodyList->GetWorldCenter().y > m_Panel->GetBody()->GetWorldCenter().y )
@@ -89,15 +93,15 @@ void Game::Loop()
         m_World->Step( timeStep, velocityIterations, positionIterations );
         this->updateGL();
 
-    }
+    }*/
 
-/*    static int count = 0;
+    static int count = 0;
     for (;count != 2000; ++count) {
         m_World->Step( timeStep, velocityIterations, positionIterations );
         this->updateGL();
     }
 
-   bool finished = false;
+/*   bool finished = false;
     while ( !finished )
 	{
 		m_World->Step( timeStep, velocityIterations, positionIterations );

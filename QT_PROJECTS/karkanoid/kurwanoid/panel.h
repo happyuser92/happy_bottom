@@ -9,7 +9,7 @@ class Panel : public GraphicalObject
      float m_Height;
 
 public:
-     Panel( float w, float h, b2Body* boxBody, b2World &world);
+     Panel( float w, float h, b2Body* boxBody, b2World *world);
      virtual ~Panel();
      b2Body* GetBody();
      float GetWidth();

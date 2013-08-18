@@ -48,7 +48,7 @@ private:
 	Panel* m_Panel;
 	Wall* m_Wall;
 	Box* m_Box;
-//    Brick* m_Brick;
+    Brick* m_Brick;
 
 	b2World* m_World;
 
